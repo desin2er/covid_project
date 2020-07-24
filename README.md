@@ -10,4 +10,4 @@
 * Raspbarry pi 3, 4
 * 언어 : python, kivy
 
-[](https://github.com/desin2er/covid_project/images/face1.jpg)
+![](/images/face1.jpg)
