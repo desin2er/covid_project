@@ -1,0 +1,148 @@
+# -*- coding: utf-8 -*-
+#: import utils kivy
+#: import os os
+#: import Factory kivy.factory.Factory
+#:import FadeTransition kivy.uix.screenmanager.FadeTransition
+<Bt@Button>:
+    text: ''
+
+
+<Manager>:
+
+    transition: FadeTransition()
+
+    screen_main: screen_main_id
+    screen_one: screen_one_id    
+    ScreenMain:
+        id:screen_main_id
+        name: 'ScreenMain'
+    ScreenOne:
+        id: screen_one_id
+        name: 'Screen1'  
+
+        
+<ScreenMain>:
+    FloatLayout:
+
+        FloatLayout:
+            size_hint:1,1
+            CamLive:                
+                size_hint:0.5,0.7
+                pos_hint:{'x':0.00,'y':0.2}
+            Tmpl_cam:
+                size_hint:0.4,0.7
+                pos_hint:{'x':0.55,'y':0.2}
+        FloatLayout:
+            Bt:            
+                size_hint:0.08,0.08
+                pos_hint:{'x':0.35,'y':0.01}
+                border:0,0,0,0
+                background_normal:'image/mp1.png'
+                
+                background_down:'image/mp10.png'
+                on_release: root.song_popup()        
+            Bt:
+                
+                size_hint:0.08,0.08
+                background_normal: 'image/cam.png'
+                background_down: 'image/cam2.png'
+                border:0,0,0,0
+                pos_hint:{'x':0.45,'y':0.01}
+                on_release: root.pohoto()
+               
+            Bt:            
+                #text:root.bt_manager           
+                on_release: root.manager.current = 'Screen1'
+                background_normal: 'image/manager.png'
+                background_down: 'image/manager1.png'
+                border:0,0,0,0
+                size_hint:0.078,0.083
+                pos_hint:{'x':0.55,'y':0.01}
+
+<Picture_popup>:
+    id:pop
+    size_hint:0.7,0.7
+    title:'Camera'
+    FloatLayout:
+        FloatLayout:
+            
+            Bt:
+                text:'save'
+                on_press:pop.dismiss()
+                size_hint:0.2,0.2
+                pos_hint:{'x':0.73,'y':0.27}
+            Bt:
+                text:'retry'
+                on_press:root.capture()
+                size_hint:0.2,0.2
+                pos_hint:{'x':0.53,'y':0.27}
+        FloatLayout:
+            size_hint:1,0.8
+            pos_hint:{'x':0,'y':0.2}
+            canvas.before:
+                Rectangle:                             
+                    pos:self.pos
+                    size:self.size
+                    texture:root.texture
+<WarningPopup>:
+    title:'When save, Touch me'
+    background:'image/warning.png'
+    id:pop1
+    size_hint:0.5,0.5
+    Bt:
+        text:'close'
+        on_press:root.warning_back()
+
+<VidPopup>:
+    id:vidpop
+    size_hint:1,1
+    
+    FloatLayout:
+        size_hint:1,1
+        VideoPlayer:
+            source:'video/video.mp4'
+            state:'play'
+            options: {'eos': 'loop'}
+            
+        Button:
+            size_hint:1,1
+            on_press:vidpop.dismiss()
+            background_color:0,0,0,0
+
+
+<SongPopup>:
+    c_btn: song_btn
+    rv: rv
+    id:pop3
+    size_hint:0.6,0.7
+    auto_dismiss:False
+    title:'MP3 Play List'
+        
+    FloatLayout:
+        
+        Bt:
+            text:'X'             
+            size_hint:10,10
+            background_color:0,0,0,0
+            pos_hint:{'x':-0.6,'y':-0.7}
+            on_press:pop3.dismiss()  
+        Rv:
+            pos_hint:{'x':0,'y':0.1}
+            id:rv
+            data:self.data
+            viewclass: 'SelectableLabel'
+            SelectableRecycleBoxLayout:
+                default_size: None, dp(56)
+                default_size_hint: 1, None
+                size_hint_y: None
+                height: self.minimum_height
+                orientation: 'vertical'
+                multiselect: False
+                touch_multiselect: True
+                
+        Button:
+            id: song_btn
+            font_name: '/home/pi/work/pro/pro1/font/NGULIM.TTF'
+            text:root.t_btn_text
+            group:'song'
+            on_release: ro
