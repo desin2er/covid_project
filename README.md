@@ -11,5 +11,15 @@
 * Raspbarry pi 3, 4
 * 언어 : python, kivy
 ##
+#### Tkinter
+![](/images/tk0.png)
+#### kivy
+![](/images/main0.png)
+![](/images/music0.png)
+![](/images/setting0.png)
 #### 얼굴 인식, 라즈베리파이에서 실행한 결과
 ![](/images/face0.jpg)
+
+#### 얼굴 인식, 라즈베리파이에서 실행한 결과
+![](/images/ps_image1.jpg)
+
