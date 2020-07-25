@@ -29,6 +29,7 @@ from kivy.lang import Builder
 import time
 import server as sv
 from MusicControl import *
+from MainControl import *
 import cv2
 
 # from MainControl import *
