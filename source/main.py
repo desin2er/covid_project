@@ -56,7 +56,6 @@ class CamLive(Image):
             # print(buf.shape)
             test = buf.tostring()
             
-            # print('왜 안되니')
             textimg= Texture.create(size=(buf.shape[1], buf.shape[0]), colorfmt='rgba')
             textimg.blit_buffer(test, colorfmt='rgba', bufferfmt='ubyte')
             self.texture = textimg
@@ -81,19 +80,6 @@ class Tmpl_cam(Image):
             textimg.blit_buffer(test, colorfmt='rgba', bufferfmt='ubyte')
             self.texture = textimg
     
-
-    
-    # def update1(self):
-    
-    #     #print(self.chk)
-    #     while 1:                         
-    #         if fm.Func_Class.chk==1 and self.chk == 0:
-    #             w = WarningPopup()
-    #             w.open()
-    #             self.chk = 1
-    #         elif fm.Func_Class.chk == 0 or fm.Func_Class.chk == 2 and self.chk == 1:
-    #             self.chk = 0
-
 
 class StatusBar(ActionBar):
     pass
@@ -132,14 +118,7 @@ class ScreenMain(Screen):#main page
 
 class Picture_popup(Popup,Image):
     pass
-    # print('aaaaa')
-    # def __init__(self, **kwargs):
-    #     super(Picture_popup,self).__init__(**kwargs)
-    #     #camera
-    #     self.capture()
-    # def capture(self):
-    #     cap_buf = self.fun.cam_pic()
-    #     self.texture = cap_buf          
+
         
 class ScreenOne(Screen):#관리자 페이지
     def __init__(self, **kw):
